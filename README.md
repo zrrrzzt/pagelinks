@@ -1,6 +1,6 @@
 #pagelinks [![Build Status](https://travis-ci.org/zrrrzzt/pagelinks.svg?branch=master)](https://travis-ci.org/zrrrzzt/pagelinks)
 
-Node.js module/CLI app for scraping links from a page
+Node.js module/CLI app for scraping links from a webpage
 
 ##Installation
 
