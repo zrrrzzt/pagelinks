@@ -19,11 +19,15 @@ function printHelp() {
   console.log('Usage:');
   console.log('  $ pagelinks <uri>');
   console.log('');
-  console.log('Or:');
+  console.log('or:');
   console.log('  $ pagelinks --file=<file>');
   console.log('');
-  console.log('Or:');
+  console.log('or:');
   console.log('  $ pagelinks --data=<data>');
+  console.log('');
+  console.log('Default the module will return text, href, id, target and class from the links.');
+  console.log('For other attributes/properties supply a comma separated string of attributes.');
+  console.log('  $ pagelinks <uri> --attrs="href,data-title,data-description"');
 }
 
 if (!query || process.argv.indexOf('-h') !== -1 || process.argv.indexOf('--help') !== -1) {
