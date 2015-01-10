@@ -1,17 +1,16 @@
 #!/usr/bin/env node
 'use strict';
 
-var pagelinks = require('./index')
-  , pkg = require('./package.json')
-  , query = process.argv[2]
-  , argv = require('minimist')((process.argv.slice(2)))
-  , opts = {
-      uri: false,
-      file: false,
-      data: false,
-      attrs: false
-    }
-  ;
+var pagelinks = require('./index');
+var pkg = require('./package.json');
+var query = process.argv[2];
+var argv = require('minimist')((process.argv.slice(2)));
+var opts = {
+  uri: false,
+  file: false,
+  data: false,
+  attrs: false
+};
 
 function printHelp() {
   console.log(pkg.description);
