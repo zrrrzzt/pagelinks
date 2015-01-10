@@ -2,31 +2,8 @@
 
 var fs = require('fs');
 var request = require('request');
-var cheerio = require('cheerio');
 var validUrl = require('valid-url');
-
-function parseDataForLinks(opts, callback){
-  var $ = cheerio.load(opts.data);
-  var attrs = opts.attrs || ['href', 'id', 'target', 'class'];
-  var links = [];
-
-  $('a').each(function(index, element){
-    var e = $(element);
-    var props = {};
-
-    props.text = e.text();
-
-    attrs.forEach(function(el){
-      if(e.attr(el)){
-        props[el] = e.attr(el);
-      }
-    });
-
-    links.push(props);
-  });
-
-  return callback(null, links);
-}
+var parseDataForLinks = require('./lib/parsedataforlinks');
 
 module.exports = function getPageLinks(opts, callback){
 
