@@ -1,7 +1,7 @@
 {
   "name": "pagelinks",
-  "version": "0.0.1",
-  "description": "Scrape links from a webpage",
+  "version": "1.0.0",
+  "description": "Get all links from a webpage",
   "author": {
     "name": "Geir Gåsodden",
     "email": "geir.gasodden@pythonia.no",
