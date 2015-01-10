@@ -1,9 +1,8 @@
 'use strict';
 
-var assert = require('assert')
-  , fs = require('fs')
-  , pagelinks = require('../index')
-  ;
+var assert = require('assert');
+var fs = require('fs');
+var pagelinks = require('../index');
 
 describe('pagelinks - output data', function(){
 
@@ -11,14 +10,13 @@ describe('pagelinks - output data', function(){
 
     fs.readFile('test/testpage.html', function(err, data){
 
-      if(err){
+      if (err) {
         throw err;
       }
 
       var opts = {
-          data : data.toString()
-        }
-        ;
+        data : data.toString()
+      };
 
       pagelinks(opts, function(err, links){
         if(err){
@@ -29,10 +27,9 @@ describe('pagelinks - output data', function(){
 
         done();
 
-      })
+      });
 
-    })
-
+    });
 
   });
 
@@ -46,9 +43,8 @@ describe('pagelinks - output data', function(){
       }
 
       var opts = {
-          data: data.toString()
-        }
-        ;
+        data: data.toString()
+      };
 
       pagelinks(opts, function (err, links) {
         if (err) {
@@ -63,9 +59,9 @@ describe('pagelinks - output data', function(){
 
         done();
 
-      })
+      });
 
-    })
+    });
 
   });
 
@@ -78,10 +74,9 @@ describe('pagelinks - output data', function(){
       }
 
       var opts = {
-          data: data.toString(),
-          attrs: ['data-gingerbread']
-        }
-        ;
+        data: data.toString(),
+        attrs: ['data-gingerbread']
+      };
 
       pagelinks(opts, function (err, links) {
         if (err) {
@@ -92,9 +87,9 @@ describe('pagelinks - output data', function(){
 
         done();
 
-      })
+      });
 
-    })
+    });
 
   });
 

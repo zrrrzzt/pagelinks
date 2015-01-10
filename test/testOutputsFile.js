@@ -1,20 +1,18 @@
 'use strict';
 
-var assert = require('assert')
-  , pagelinks = require('../index')
-  ;
+var assert = require('assert');
+var pagelinks = require('../index');
 
 describe('pagelinks - output file', function(){
 
   it('Should return 3 links', function(done){
 
     var opts = {
-          file : 'test/testpage.html'
-        }
-      ;
+      file : 'test/testpage.html'
+    };
 
     pagelinks(opts, function(err, links){
-      if(err){
+      if (err) {
         throw err;
       }
 
@@ -22,19 +20,18 @@ describe('pagelinks - output file', function(){
 
       done();
 
-    })
+    });
 
   });
 
   it('Should return href', function(done){
 
     var opts = {
-        file : 'test/testpage.html'
-      }
-      ;
+      file : 'test/testpage.html'
+    };
 
     pagelinks(opts, function(err, links){
-      if(err){
+      if (err) {
         throw err;
       }
 
@@ -46,20 +43,19 @@ describe('pagelinks - output file', function(){
 
       done();
 
-    })
+    });
 
   });
 
   it('Should return data-gingerbread', function(done){
 
     var opts = {
-        file : 'test/testpage.html',
-        attrs:['data-gingerbread']
-      }
-      ;
+      file : 'test/testpage.html',
+      attrs:['data-gingerbread']
+    };
 
     pagelinks(opts, function(err, links){
-      if(err){
+      if (err) {
         throw err;
       }
 
@@ -67,7 +63,7 @@ describe('pagelinks - output file', function(){
 
       done();
 
-    })
+    });
 
   });
 
