@@ -1,9 +1,9 @@
 'use strict';
 
 var assert = require('assert');
-var pagelinks = require('../index');
+var getPageData = require('../lib/getpagedata');
 
-describe('pagelinks - inputs', function(){
+describe('getPageData - inputs', function(){
 
   it('Should throw if uri or file or data is not specified', function(done){
 
@@ -13,7 +13,7 @@ describe('pagelinks - inputs', function(){
         data:false
     };
 
-    pagelinks(opts, function(err, data){
+    getPageData(opts, function(err, data){
       assert.throws(function(){
           if (err) {
             throw err;
@@ -38,7 +38,7 @@ describe('pagelinks - inputs', function(){
           uri:'pysje'
     };
 
-    pagelinks(opts, function(err, data){
+    getPageData(opts, function(err, data){
       assert.throws(function(){
           if (err) {
             throw err;

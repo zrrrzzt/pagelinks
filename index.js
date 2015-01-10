@@ -7,8 +7,9 @@ function parseAndReturn(options, callback){
   parseDataForLinks(options, function(err, links){
     if (err) {
       return callback(err, null);
+    } else {
+      return callback(null, links);
     }
-    return callback(null, links);
   });
 }
 
