@@ -1,8 +1,6 @@
 'use strict';
 
-var fs = require('fs');
-var request = require('request');
-var validUrl = require('valid-url');
+var getPageData = require('./lib/getpagedata');
 var parseDataForLinks = require('./lib/parsedataforlinks');
 
 function parseAndReturn(options, callback){
@@ -14,54 +12,19 @@ function parseAndReturn(options, callback){
   });
 }
 
-function getPageData(opts, callback){
-
-  if (!opts.uri && !opts.file && !opts.data) {
-    return callback(new Error('Missing required param'), null);
-  }
-
-  if (opts.uri && !validUrl.isWebUri(opts.uri)) {
-    return callback(new Error('Invalid uri'), null);
-  }
-
+function getPageLinks(options, callback){
   var newOpts = {
-    data : false,
-    attrs: opts.attrs
+    attrs: options.attrs
   };
 
-  if (opts.uri) {
-    request(opts.uri, function(error, response, body){
-      if (error) {
-        return callback(error, null);
-      }
-
-      newOpts.data = body.toString();
-
+  getPageData(options, function(err, data){
+    if (err) {
+      return callback(err, null);
+    } else {
+      newOpts.data = data;
       parseAndReturn(newOpts, callback);
-
-    });
-  }
-
-  if (opts.file) {
-    fs.readFile(opts.file, function(err, data){
-      if (err) {
-        return callback(err, null);
-      }
-
-      newOpts.data = data.toString();
-
-      parseAndReturn(newOpts, callback);
-
-    });
-  }
-
-  if (opts.data) {
-
-    newOpts.data = opts.data;
-
-    parseAndReturn(newOpts, callback);
-  }
-
+    }
+  });
 }
 
-module.exports = getPageData;
+module.exports = getPageLinks;
