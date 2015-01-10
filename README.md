@@ -14,14 +14,6 @@ You can also install it globally to use the CLI version
 $ npm install pagelinks -g
 ```
 
-##Test
-
-Make sure you have installed [Mocha](http://visionmedia.github.io/mocha/) globally or go to the pagelinks folder and do an nmp install.
-
-```
-$ npm test
-```
-
 ##Usage - module
 
 Pass an object with the uri, file or data for the page you want to scrape.
