@@ -1,21 +1,18 @@
 'use strict';
 
-var fs = require('fs')
-  , request = require('request')
-  , cheerio = require('cheerio')
-  , validUrl = require('valid-url')
-  ;
+var fs = require('fs');
+var request = require('request');
+var cheerio = require('cheerio');
+var validUrl = require('valid-url');
 
 function parseDataForLinks(opts, callback){
-  var $ = cheerio.load(opts.data)
-    , attrs = opts.attrs || ['href', 'id', 'target', 'class']
-    , links = []
-    ;
+  var $ = cheerio.load(opts.data);
+  var attrs = opts.attrs || ['href', 'id', 'target', 'class'];
+  var links = [];
 
   $('a').each(function(index, element){
-    var e = $(element)
-      , props = {}
-      ;
+    var e = $(element);
+    var props = {};
 
     props.text = e.text();
 
@@ -102,4 +99,4 @@ module.exports = function getPageLinks(opts, callback){
     });
   }
 
-}
+};
