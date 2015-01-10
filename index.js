@@ -5,75 +5,63 @@ var request = require('request');
 var validUrl = require('valid-url');
 var parseDataForLinks = require('./lib/parsedataforlinks');
 
-module.exports = function getPageLinks(opts, callback){
+function parseAndReturn(options, callback){
+  parseDataForLinks(options, function(err, links){
+    if (err) {
+      return callback(err, null);
+    }
+    return callback(null, links);
+  });
+}
 
-  if(!opts.uri && !opts.file && !opts.data){
+function getPageData(opts, callback){
+
+  if (!opts.uri && !opts.file && !opts.data) {
     return callback(new Error('Missing required param'), null);
   }
 
-  if(opts.uri && !validUrl.isWebUri(opts.uri)){
+  if (opts.uri && !validUrl.isWebUri(opts.uri)) {
     return callback(new Error('Invalid uri'), null);
   }
 
   var newOpts = {
-      data : false,
-      attrs: opts.attrs
-    }
-    ;
+    data : false,
+    attrs: opts.attrs
+  };
 
-  if(opts.uri){
+  if (opts.uri) {
     request(opts.uri, function(error, response, body){
-      if(error){
+      if (error) {
         return callback(error, null);
       }
 
-      newOpts.data = body.toString()
-        ;
+      newOpts.data = body.toString();
 
-      parseDataForLinks(newOpts, function(err, links){
-        if(err){
-          return callback(err, null);
-        }
-
-        return callback(null, links);
-
-      });
+      parseAndReturn(newOpts, callback);
 
     });
   }
 
-  if(opts.file){
+  if (opts.file) {
     fs.readFile(opts.file, function(err, data){
-      if(err){
+      if (err) {
         return callback(err, null);
       }
 
       newOpts.data = data.toString();
 
-      parseDataForLinks(newOpts, function(err, links){
-        if(err){
-          return callback(err, null);
-        }
-
-        return callback(null, links);
-
-      });
+      parseAndReturn(newOpts, callback);
 
     });
   }
 
-  if(opts.data){
+  if (opts.data) {
 
     newOpts.data = opts.data;
 
-    parseDataForLinks(newOpts, function(err, links){
-      if(err){
-        return callback(err, null);
-          }
-
-      return callback(null, links);
-
-    });
+    parseAndReturn(newOpts, callback);
   }
 
-};
+}
+
+module.exports = getPageData;
