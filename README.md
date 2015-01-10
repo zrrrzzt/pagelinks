@@ -27,14 +27,15 @@ $ npm test
 Pass an object with the uri, file or data for the page you want to scrape.
 
 ```javascript
-var pagelinks = require('pagelinks')
-  , opts = {
-      uri: 'http://www.google.com'
-    } 
-  ;
+var pagelinks = require('pagelinks');
+var opts = {
+  uri: 'http://www.google.com'
+};
 
 pagelinks(opts, function(err, links){
-  if(err)throw err;
+  if (err) {
+    throw err;
+  }
   console.log(links);
 });
 ```
@@ -42,27 +43,27 @@ pagelinks(opts, function(err, links){
 or
 
 ```
-  opts = {
-    file:'mypath/myfile.html'
-  }
+var opts = {
+  file:'mypath/myfile.html'
+};
 ```
 
 or
 
 ```
-  opts = {
-    data: <pagedata>
-  }
+var opts = {
+  data: <pagedata>
+};
 ```
 
 Default the module will return text, 'href', 'id', 'target' and 'class' from the links.
 For other attributes/properties supply an array of attributes.
 
 ```
-  opts = {
-    uri:<uri>,
-    attrs:['href', 'data-title', 'data-description']
-  }
+var opts = {
+  uri:<uri>,
+  attrs:['href', 'data-title', 'data-description']
+};
 ```
 
 
