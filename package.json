@@ -1,6 +1,6 @@
 {
   "name": "pagelinks",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Get all links from a webpage",
   "author": {
     "name": "Geir Gåsodden",
@@ -17,12 +17,6 @@
   "scripts": {
     "test": "mocha --reporter spec test/*.js"
   },
-  "files": [
-    "index.js",
-    "cli.js",
-    "lib/getpagedata.js",
-    "lib/parsedataforlinks.js"
-  ],
   "keywords": [
     "utility",
     "screenscraping"
