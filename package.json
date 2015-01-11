@@ -1,6 +1,6 @@
 {
   "name": "pagelinks",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Get all links from a webpage",
   "author": {
     "name": "Geir Gåsodden",
@@ -20,8 +20,8 @@
   "files": [
     "index.js",
     "cli.js",
-    "lib/getpagedata",
-    "lib/parsedataforlinks"
+    "lib/getpagedata.js",
+    "lib/parsedataforlinks.js"
   ],
   "keywords": [
     "utility",
