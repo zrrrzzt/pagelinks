@@ -1,70 +1,57 @@
-'use strict';
+'use strict'
 
-var assert = require('assert');
-var pagelinks = require('../index');
+const tap = require('tap')
+const pagelinks = require('../index')
 
-describe('pagelinks - output file', function(){
+tap.test('Should return 3 links', function (test) {
+  const opts = {
+    file: 'test/testpage.html'
+  }
 
-  it('Should return 3 links', function(done){
+  pagelinks(opts, (err, links) => {
+    if (err) {
+      throw err
+    }
 
-    var opts = {
-      file : 'test/testpage.html'
-    };
+    tap.equal(links.length, 3, '3 links it is')
 
-    pagelinks(opts, function(err, links){
-      if (err) {
-        throw err;
-      }
+    test.done()
+  })
+})
 
-      assert.equal(links.length, 3);
+tap.test('3 links contains expected href', function (test) {
+  const opts = {
+    file: 'test/testpage.html'
+  }
 
-      done();
+  pagelinks(opts, (err, links) => {
+    if (err) {
+      throw err
+    }
 
-    });
+    tap.equal(links[0].href, 'https://github.com/zrrrzzt', 'Link 1 OK')
 
-  });
+    tap.equal(links[1].href, '127.0.0.1', 'Link 2 OK')
 
-  it('Should return href', function(done){
+    tap.equal(links[2].href, 'https://www.npmjs.org', 'Link 3 OK')
 
-    var opts = {
-      file : 'test/testpage.html'
-    };
+    test.done()
+  })
+})
 
-    pagelinks(opts, function(err, links){
-      if (err) {
-        throw err;
-      }
+tap.test('Should return data-gingerbread', function (test) {
+  const opts = {
+    file: 'test/testpage.html',
+    attrs: ['data-gingerbread']
+  }
 
-      assert.equal(links[0].href, 'https://github.com/zrrrzzt');
+  pagelinks(opts, (err, links) => {
+    if (err) {
+      throw err
+    }
 
-      assert.equal(links[1].href, '127.0.0.1');
+    tap.equal(links[0]['data-gingerbread'], 'bevare of fakes', 'Gingerbread OK')
 
-      assert.equal(links[2].href, 'https://www.npmjs.org');
-
-      done();
-
-    });
-
-  });
-
-  it('Should return data-gingerbread', function(done){
-
-    var opts = {
-      file : 'test/testpage.html',
-      attrs:['data-gingerbread']
-    };
-
-    pagelinks(opts, function(err, links){
-      if (err) {
-        throw err;
-      }
-
-      assert.equal(links[0]['data-gingerbread'], 'bevare of fakes');
-
-      done();
-
-    });
-
-  });
-
-});
+    test.done()
+  })
+})

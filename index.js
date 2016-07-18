@@ -1,31 +1,28 @@
-'use strict';
+'use strict'
 
-var getPageData = require('./lib/getpagedata');
-var parseDataForLinks = require('./lib/parsedataforlinks');
+const getPageData = require('./lib/get-page-data')
+const parseDataForLinks = require('./lib/parse-data-for-links')
 
-function parseAndReturn(options, callback){
-  parseDataForLinks(options, function(err, links){
-    if (err) {
-      return callback(err, null);
+const parseAndReturn = (options, callback) => {
+  parseDataForLinks(options, (error, links) => {
+    if (error) {
+      return callback(error, null)
     } else {
-      return callback(null, links);
+      return callback(null, links)
     }
-  });
+  })
 }
 
-function getPageLinks(options, callback){
-  var newOpts = {
-    attrs: options.attrs
-  };
-
-  getPageData(options, function(err, data){
-    if (err) {
-      return callback(err, null);
+module.exports = (options, callback) => {
+  getPageData(options, (error, data) => {
+    if (error) {
+      return callback(error, null)
     } else {
-      newOpts.data = data;
-      parseAndReturn(newOpts, callback);
+      const newOptions = {
+        attrs: options.attrs,
+        data: data
+      }
+      parseAndReturn(newOptions, callback)
     }
-  });
+  })
 }
-
-module.exports = getPageLinks;

@@ -1,96 +1,76 @@
-'use strict';
+'use strict'
 
-var assert = require('assert');
-var fs = require('fs');
-var pagelinks = require('../index');
+const fs = require('fs')
+const tap = require('tap')
+const pagelinks = require('../index')
 
-describe('pagelinks - output data', function(){
+tap.test('Should return 3 links', function (test) {
+  fs.readFile('test/testpage.html', (err, data) => {
+    if (err) {
+      throw err
+    }
 
-  it('Should return 3 links', function(done){
+    const opts = {
+      data: data.toString()
+    }
 
-    fs.readFile('test/testpage.html', function(err, data){
-
+    pagelinks(opts, (err, links) => {
       if (err) {
-        throw err;
+        throw err
       }
 
-      var opts = {
-        data : data.toString()
-      };
+      tap.equal(links.length, 3, '3 links it is')
 
-      pagelinks(opts, function(err, links){
-        if(err){
-          throw err;
-        }
+      test.done()
+    })
+  })
+})
 
-        assert.equal(links.length, 3);
+tap.test('3 links contains expected href', function (test) {
+  fs.readFile('test/testpage.html', (err, data) => {
+    if (err) {
+      throw err
+    }
 
-        done();
+    const opts = {
+      data: data.toString()
+    }
 
-      });
-
-    });
-
-  });
-
-
-  it('Should return href', function(done){
-
-    fs.readFile('test/testpage.html', function(err, data) {
-
+    pagelinks(opts, (err, links) => {
       if (err) {
-        throw err;
+        throw err
       }
 
-      var opts = {
-        data: data.toString()
-      };
+      tap.equal(links[0].href, 'https://github.com/zrrrzzt', 'Link 1 OK')
 
-      pagelinks(opts, function (err, links) {
-        if (err) {
-          throw err;
-        }
+      tap.equal(links[1].href, '127.0.0.1', 'Link 2 OK')
 
-        assert.equal(links[0].href, 'https://github.com/zrrrzzt');
+      tap.equal(links[2].href, 'https://www.npmjs.org', 'Link 3 OK')
 
-        assert.equal(links[1].href, '127.0.0.1');
+      test.done()
+    })
+  })
+})
 
-        assert.equal(links[2].href, 'https://www.npmjs.org');
+tap.test('Should return data-gingerbread', function (test) {
+  fs.readFile('test/testpage.html', (err, data) => {
+    if (err) {
+      throw err
+    }
 
-        done();
+    const opts = {
+      data: data.toString(),
+      attrs: ['data-gingerbread']
+    }
 
-      });
-
-    });
-
-  });
-
-  it('Should return data-gingerbread', function(done){
-
-    fs.readFile('test/testpage.html', function(err, data) {
-
+    pagelinks(opts, (err, links) => {
       if (err) {
-        throw err;
+        throw err
       }
 
-      var opts = {
-        data: data.toString(),
-        attrs: ['data-gingerbread']
-      };
+      tap.equal(links[0]['data-gingerbread'], 'bevare of fakes', 'Gingerbread OK')
 
-      pagelinks(opts, function (err, links) {
-        if (err) {
-          throw err;
-        }
-
-        assert.equal(links[0]['data-gingerbread'], 'bevare of fakes');
-
-        done();
-
-      });
-
-    });
-
-  });
-
-});
+      test.done()
+    })
+  })
+})
