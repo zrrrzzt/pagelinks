@@ -38,7 +38,7 @@
     "valid-url": "1.0.9"
   },
   "devDependencies": {
-    "coveralls": "2.11.11",
+    "coveralls": "2.11.12",
     "nsp": "2.6.1",
     "standard": "7.1.2",
     "tap": "6.2.0"
