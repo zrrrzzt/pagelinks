@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/zrrrzzt/pagelinks.svg?branch=master)](https://travis-ci.org/zrrrzzt/pagelinks)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](https://github.com/feross/standard)
+
 # pagelinks 
 
 Node.js module/CLI app for scraping links from a webpage
@@ -20,7 +21,7 @@ $ npm install pagelinks -g
 
 Pass an object with the uri, file or data for the page you want to scrape.
 
-```javascript
+```JavaScript
 var pagelinks = require('pagelinks');
 var opts = {
   uri: 'http://www.google.com'
@@ -103,4 +104,5 @@ $ pagelinks <uri> --attrs='href,data-title,data-description'
 ```
 
 ## License
+
 [MIT](LICENSE)
