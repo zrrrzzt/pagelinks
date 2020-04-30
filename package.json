@@ -13,7 +13,7 @@
     "pagelinks": "cli.js"
   },
   "engines": {
-    "node": ">=4.5.0"
+    "node": ">=14.0.0"
   },
   "scripts": {
     "test": "standard && nsp check && tap --reporter=spec test/*.js",
