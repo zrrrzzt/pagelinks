@@ -22,45 +22,80 @@ $ npm install pagelinks -g
 Pass an object with the uri, file or data for the page you want to scrape.
 
 ```JavaScript
-var pagelinks = require('pagelinks');
-var opts = {
+const pagelinks = require('pagelinks')
+const options = {
   uri: 'http://www.google.com'
-};
+}
 
-pagelinks(opts, function(err, links){
-  if (err) {
-    throw err;
+pagelinks(options, function(error, links) {
+  if (error) {
+    throw error
   }
-  console.log(links);
-});
+  console.log(links)
+})
 ```
 
 or
 
 ```
-var opts = {
+const options = {
   file:'mypath/myfile.html'
-};
+}
 ```
 
 or
 
 ```
-var opts = {
+const options = {
   data: <pagedata>
-};
+}
+```
+
+returns
+
+```JavaScript
+[
+  {
+    text: 'Søk',
+    href: 'https://www.google.no/webhp?tab=ww',
+    id: 'gb_1',
+    class: 'gbzt gbz0l gbp1'
+  },
+  {
+    text: 'Bilder',
+    href: 'http://www.google.no/imghp?hl=no&tab=wi',
+    id: 'gb_2',
+    class: 'gbzt'
+  },
+  {
+    text: 'Maps',
+    href: 'http://maps.google.no/maps?hl=no&tab=wl',
+    id: 'gb_8',
+    class: 'gbzt'
+  },
+  {
+    text: 'Play',
+    href: 'https://play.google.com/?hl=no&tab=w8',
+    id: 'gb_78',
+    class: 'gbzt'
+  },
+  { text: 'Alt om Google', href: '/intl/no/about.html' },
+  {
+    text: 'Google.no',
+    href: 'http://www.google.com/setprefdomain?prefdom=NO&prev=http://www.google.no/&sig=K_Yael_-8yUXfGhE8aXDXMo07ePOo%3D'
+  }
+]
 ```
 
 Default the module will return text, 'href', 'id', 'target' and 'class' from the links.
 For other attributes/properties supply an array of attributes.
 
 ```
-var opts = {
+const options = {
   uri:<uri>,
   attrs:['href', 'data-title', 'data-description']
-};
+}
 ```
-
 
 ## Usage - CLI
 
