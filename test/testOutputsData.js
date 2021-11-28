@@ -21,7 +21,7 @@ tap.test('Should return 3 links', function (test) {
 
       tap.equal(links.length, 3, '3 links it is')
 
-      test.done()
+      test.end()
     })
   })
 })
@@ -47,7 +47,7 @@ tap.test('3 links contains expected href', function (test) {
 
       tap.equal(links[2].href, 'https://www.npmjs.org', 'Link 3 OK')
 
-      test.done()
+      test.end()
     })
   })
 })
@@ -70,7 +70,7 @@ tap.test('Should return data-gingerbread', function (test) {
 
       tap.equal(links[0]['data-gingerbread'], 'bevare of fakes', 'Gingerbread OK')
 
-      test.done()
+      test.end()
     })
   })
 })

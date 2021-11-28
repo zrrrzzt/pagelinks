@@ -13,7 +13,7 @@ tap.test('Should throw if uri or file or data is not specified', function (test)
   getPageData(options, (error, data) => {
     const expectedErrorMessage = 'Missing required param'
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
-    test.done()
+    test.end()
   })
 })
 
@@ -25,6 +25,6 @@ tap.test('Should throw if uri is not valid', function (test) {
   getPageData(options, (error, data) => {
     const expectedErrorMessage = 'Invalid uri'
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
-    test.done()
+    test.end()
   })
 })

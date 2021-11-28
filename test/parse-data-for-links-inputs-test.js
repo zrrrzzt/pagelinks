@@ -9,7 +9,7 @@ tap.test('Requires an options object', function (test) {
   parseDataForLinks(options, (error, data) => {
     const expectedErrorMessage = 'Missing required input: options'
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
-    test.done()
+    test.end()
   })
 })
 
@@ -21,6 +21,6 @@ tap.test('Requires options.data to exist', function (test) {
   parseDataForLinks(options, (error, data) => {
     const expectedErrorMessage = 'Missing required input: options.data'
     tap.equal(error.message, expectedErrorMessage, expectedErrorMessage)
-    test.done()
+    test.end()
   })
 })
