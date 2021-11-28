@@ -40,5 +40,8 @@
   "devDependencies": {
     "standard": "16.0.4",
     "tap": "15.1.5"
+  },
+  "tap": {
+    "coverage": false
   }
 }
