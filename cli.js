@@ -5,7 +5,7 @@ const pagelinks = require('./index')
 const pkg = require('./package.json')
 const query = process.argv[2]
 const argv = require('minimist')((process.argv.slice(2)))
-var options = {
+const options = {
   uri: false,
   file: false,
   data: false,
