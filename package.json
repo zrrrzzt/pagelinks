@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "standard": "16.0.4",
-    "tap": "16.1.0"
+    "tap": "16.2.0"
   },
   "tap": {
     "coverage": false
