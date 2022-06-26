@@ -33,7 +33,7 @@
     "url": "http://github.com/zrrrzzt/pagelinks/issues"
   },
   "dependencies": {
-    "cheerio": "1.0.0-rc.10",
+    "cheerio": "1.0.0-rc.12",
     "minimist": "1.2.6",
     "valid-url": "1.0.9"
   },
